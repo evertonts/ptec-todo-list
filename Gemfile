@@ -39,6 +39,8 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'responders'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
