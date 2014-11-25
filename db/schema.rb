@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141125172548) do
 
   create_table "tasks", force: true do |t|
     t.integer  "list_id"
-    t.text     "description"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
