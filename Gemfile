@@ -45,6 +45,7 @@ gem 'responders'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 # Use Capistrano for deployment
