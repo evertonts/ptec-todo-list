@@ -2,9 +2,17 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    respond_with(@list)
   end
 
   def create
+    @list = List.create(list_params)
+    respond_with(@list)
+  end
+
+  def show
+    @list = List.find(params[:id])
+    respond_with(@list)
   end
 
   private
