@@ -35,7 +35,8 @@ gem 'spring',        group: :development
 # Use unicorn as the app server
 gem 'unicorn'
 
-gem 'simple_form'
+# Using rc version to fix some problems with bootstrap 3
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 
 gem 'devise'
 
