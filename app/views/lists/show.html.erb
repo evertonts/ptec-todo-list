@@ -1,1 +1,6 @@
-<%= @list.name %>
+<h1><%= @list.name %></h1>
+<div class="row">
+  <%= render 'tasks/form', list_id: @list.id %>
+</div>
+
+<%= render 'tasks/list', tasks: @list.tasks %>

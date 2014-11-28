@@ -1,0 +1,5 @@
+<%= simple_form_for(@list, html: { class: 'col-sm-3' }) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :particular, inline_label: 'private', label: false %>
+  <%= f.submit %>
+<% end %>

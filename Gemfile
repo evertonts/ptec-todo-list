@@ -46,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 # Use Capistrano for deployment
