@@ -7,9 +7,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
-    @list.user = current_user
-    @list.save
+    @list = List.create(list_params.merge(user_id: current_user.id))
     respond_with(@list)
   end
 
