@@ -1,6 +1,8 @@
 <h1><%= @list.name %></h1>
-<div class="row">
-  <%= render 'tasks/form', list_id: @list.id %>
-</div>
+<% if can_create_task_for(@list) %>
+  <div class="row">
+    <%= render 'tasks/form', list_id: @list.id %>
+  </div>
+<% end %>
 
 <%= render 'tasks/list', tasks: @list.tasks %>
