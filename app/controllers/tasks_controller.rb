@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
+  respond_to :js
+
   def create
     @task = Task.create(task_params)
-    respond_with(@task) do |format|
-      format.js
-    end
+    respond_with(@task)
   end
 
   private

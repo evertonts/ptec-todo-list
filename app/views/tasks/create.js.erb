@@ -1,1 +1,14 @@
-$('#tasks').append("<li><%= j @task.description %></li>")
+var form = $('#new_task');
+
+<% if @task.errors.any? %>
+  var errors = $('<ul />');
+  <% @task.errors.full_messages.each do |error| %>
+    errors.append('<li><%= j error %></li>');
+  <% end %>
+  form.find('.errors').html(errors);
+
+<% else %>
+  $('#tasks').append("<li><%= j @task.description %></li>")
+  form.find('input:text').val('');
+  form.find('.errors').empty();
+<% end %>

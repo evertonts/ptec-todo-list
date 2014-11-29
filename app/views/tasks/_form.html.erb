@@ -1,5 +1,7 @@
 <%= simple_form_for(Task.new, remote: true, html: { class: 'col-sm-3' }) do |f| %>
   <%= f.input :description %>
+  <div class="errors"></div>
+
   <%= f.input :list_id, as: :hidden, input_html: { value: list_id } %>
   <%= f.submit %>
 <% end %>
