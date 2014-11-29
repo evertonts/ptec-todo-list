@@ -7,7 +7,9 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.create(list_params)
+    @list = List.new(list_params)
+    @list.user = current_user
+    @list.save
     respond_with(@list)
   end
 
