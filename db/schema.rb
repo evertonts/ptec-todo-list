@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125172548) do
+ActiveRecord::Schema.define(version: 20141129175235) do
 
   create_table "lists", force: true do |t|
     t.boolean  "particular", default: false, null: false
@@ -26,5 +26,14 @@ ActiveRecord::Schema.define(version: 20141125172548) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "email",              default: "", null: false
+    t.string   "encrypted_password", default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
