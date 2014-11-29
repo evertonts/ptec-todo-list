@@ -48,6 +48,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry-rails'
   gem 'pry-nav'
+  gem 'factory_girl_rails'
 end
 
 # Use Capistrano for deployment
