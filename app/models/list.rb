@@ -3,4 +3,6 @@ class List < ActiveRecord::Base
   belongs_to :user
 
   validates :name, presence: true
+
+  scope :open, -> { where(particular: false) }
 end

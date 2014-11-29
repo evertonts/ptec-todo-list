@@ -1,4 +1,5 @@
 <%= @user.email %>
-<% @user.lists.each do |list| %>
-  <p> <%= link_to list.name, list_path(list) %> </p>
-<% end %>
+
+<h3> My Lists </h3>
+
+<%= render 'list', lists: @user.lists %>
