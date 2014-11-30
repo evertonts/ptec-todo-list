@@ -44,6 +44,7 @@ gem 'responders'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-collection_matchers'
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'pry-rails'
