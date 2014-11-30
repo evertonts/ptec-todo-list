@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
     favorite_lists.push(list)
     save
   end
+
+  def remove_favorite(list)
+    favorite_lists.delete(list)
+    save
+  end
 end
