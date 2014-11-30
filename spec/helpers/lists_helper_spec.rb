@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ListsHelper, :type => :helper do
-  describe '#can_create_task_for' do
-    let(:current_user) { FactoryGirl.create :user }
-    let(:list) { FactoryGirl.create :list, user: user }
+  let(:current_user) { FactoryGirl.create :user }
+  before { allow(helper).to receive(:current_user) { current_user } }
 
-    before { allow(helper).to receive(:current_user) { current_user } }
+  describe '#can_create_task_for' do
+    let(:list) { FactoryGirl.create :list, user: user }
 
     context 'when the current_user owns the list' do
       let(:user) { current_user }
@@ -20,6 +20,24 @@ RSpec.describe ListsHelper, :type => :helper do
 
       it 'returns false' do
         expect(helper.can_create_task_for(list)).to be_falsey
+      end
+    end
+  end
+
+  describe '#favorited_list' do
+    let(:list) { FactoryGirl.create :list}
+
+    context 'with the list on favorites' do
+      before { current_user.favorite_lists.push(list) }
+
+      it 'returns true' do
+        expect(helper.favorited_list?(list)).to be_truthy
+      end
+    end
+
+    context 'without the list on favorites' do
+      it 'returns false' do
+        expect(helper.favorited_list?(list)).to be_falsey
       end
     end
   end

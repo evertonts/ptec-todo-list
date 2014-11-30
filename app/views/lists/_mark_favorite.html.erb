@@ -1,0 +1,5 @@
+<% if favorited_list?(@list) %>
+  <%= link_to 'Remove Favorite', remove_favorite_list_path(@list), remote: true, method: 'post' %>
+<% else %>
+  <%= link_to 'Add Favorite', add_favorite_list_path(@list), remote: true, method: 'post' %>
+<% end %>

@@ -16,6 +16,27 @@ class ListsController < ApplicationController
     respond_with(@list)
   end
 
+  def add_favorite
+    @list = List.find(params[:id])
+    current_user.add_favorite(@list)
+    respond_with(@list) do |format|
+      format.js { render 'update_favorite' }
+    end
+  end
+
+  def remove_favorite
+    @list = List.find(params[:id])
+    current_user.remove_favorite(@list)
+    respond_with(@list) do |format|
+      format.js { render 'update_favorite' }
+    end
+  end
+
+  def favorites
+    @lists = current_user.favorite_lists
+    respond_with(@lists)
+  end
+
   private
 
   def list_params

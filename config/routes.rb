@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
-  resources :lists, only: [:new, :create, :show]
+  resources :lists, only: [:new, :create, :show] do
+    post 'add_favorite', on: :member
+    post 'remove_favorite', on: :member
+  end
   resources :tasks, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
