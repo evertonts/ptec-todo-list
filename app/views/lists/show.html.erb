@@ -1,7 +1,14 @@
 <h1><%= @list.name %></h1>
+
 <% if can_create_task_for(@list) %>
   <div class="row">
     <%= render 'tasks/form', list_id: @list.id %>
+  </div>
+<% end %>
+
+<% if show_favorite?(@list) %>
+  <div data-favorite="true">
+    <%= render 'mark_favorite' %>
   </div>
 <% end %>
 

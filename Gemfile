@@ -50,6 +50,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 # Use Capistrano for deployment
