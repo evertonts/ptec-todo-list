@@ -23,12 +23,13 @@
     </div>
   </nav>
   </header>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name %>
+  <% end -%>
 
-  <div class="row">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
-  </div>
+  <% if current_user %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <% end %>
 
   <div class="container">
     <%= yield %>
