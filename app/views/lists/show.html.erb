@@ -6,8 +6,10 @@
   </div>
 <% end %>
 
-<div data-favorite="true">
-  <%= render 'mark_favorite' %>
-</div>
+<% if show_favorite?(@list) %>
+  <div data-favorite="true">
+    <%= render 'mark_favorite' %>
+  </div>
+<% end %>
 
 <%= render 'tasks/list', tasks: @list.tasks %>

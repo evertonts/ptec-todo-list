@@ -41,4 +41,24 @@ RSpec.describe ListsHelper, :type => :helper do
       end
     end
   end
+
+  describe '#show_favorite?' do
+    let(:list) { FactoryGirl.create :list, user: user }
+
+    context 'user ows the list' do
+      let(:user) { current_user }
+
+      it 'returns false' do
+        expect(helper.show_favorite?(list)).to be_falsey
+      end
+    end
+
+    context 'other user owns the list' do
+      let(:user) { FactoryGirl.create :user, email: 'test2@example.com' }
+
+      it 'returns true' do
+        expect(helper.show_favorite?(list)).to be_truthy
+      end
+    end
+  end
 end
