@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :lists, only: [:new, :create, :show] do
     post 'add_favorite', on: :member
     post 'remove_favorite', on: :member
+    get 'favorites', on: :collection
   end
   resources :tasks, only: [:create]
 
