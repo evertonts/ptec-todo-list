@@ -1,3 +1,5 @@
 <% lists.each do |list| %>
-  <p> <%= link_to list.name, list_path(list) %> </p>
+  <div class="row">
+    <%= link_to list.name, list_path(list) %>
+  </div>
 <% end %>

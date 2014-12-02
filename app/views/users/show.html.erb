@@ -1,6 +1,6 @@
-<%= current_user.email %>
 
-<h3> Public Lists </h3>
+
+<h3> Public Lists of <%= current_user.email %></h3>
 
 <%= render 'lists/list', lists: @user.lists.open %>
 

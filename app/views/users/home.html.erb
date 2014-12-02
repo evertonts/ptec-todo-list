@@ -1,5 +1,5 @@
-<%= @user.email %>
-
 <h3> My Lists </h3>
 
 <%= render 'lists/list', lists: @user.lists %>
+
+<%= link_to 'New list', new_list_path %>
