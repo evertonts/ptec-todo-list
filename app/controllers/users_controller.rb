@@ -10,4 +10,9 @@ class UsersController < ApplicationController
     @user = current_user
     respond_with(@user)
   end
+
+  def index
+    @users = User.all
+    respond_with(@users)
+  end
 end
