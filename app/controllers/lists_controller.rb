@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!
   before_action :permit_see, only: :show
+  before_action :find_list, only: [:show, :add_favorite, :remove_favorite]
 
   def new
     @list = List.new
@@ -13,12 +14,10 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
     respond_with(@list)
   end
 
   def add_favorite
-    @list = List.find(params[:id])
     current_user.add_favorite(@list)
     respond_with(@list) do |format|
       format.js { render 'update_favorite' }
@@ -26,7 +25,6 @@ class ListsController < ApplicationController
   end
 
   def remove_favorite
-    @list = List.find(params[:id])
     current_user.remove_favorite(@list)
     respond_with(@list) do |format|
       format.js { render 'update_favorite' }
@@ -39,6 +37,10 @@ class ListsController < ApplicationController
   end
 
   private
+
+  def find_list
+    @list = List.find(params[:id])
+  end
 
   def list_params
     params.require(:list).permit(:name, :particular)
