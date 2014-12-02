@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!
+  before_action :permit_see, only: :show
 
   def new
     @list = List.new
@@ -41,5 +42,12 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :particular)
+  end
+
+  def permit_see
+    @list = List.find(params[:id])
+    if @list.particular && @list.user != current_user
+      redirect_to authenticated_root_path, alert: 'You cannot see this list'
+    end
   end
 end
