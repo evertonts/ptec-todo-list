@@ -1,6 +1,10 @@
 <h3>Tasks</h3>
 <ul id="tasks">
   <% tasks.each do |task| %>
-    <li><%= task.description %></li>
+    <li>
+      <%= task.description %>
+      <%= button_to display_done(task), task_path(task),
+        method: :patch, params: { 'task[id]' => task.id,'task[list_id]' => task.list_id, 'task[done]' => !task.done? } %>
+    </li>
   <% end %>
 </ul>
