@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130144501) do
+ActiveRecord::Schema.define(version: 20141205174741) do
 
   create_table "favorites", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "list_id"
+  end
+
+  create_table "feeds", force: true do |t|
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "lists", force: true do |t|

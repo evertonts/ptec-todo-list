@@ -1,0 +1,7 @@
+<h3>Feed of <%= @user.email %> </h3>
+
+<% @feeds.each do |feed| %>
+  <div class="row">
+    <%= feed.message %>
+  </div>
+<% end %>

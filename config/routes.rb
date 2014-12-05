@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index] do
+    resource 'feed', only: [:show]
+  end
 
   resources :lists, only: [:new, :create, :show] do
     post 'add_favorite', on: :member

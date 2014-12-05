@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :favorite_lists, through: :favorites, source: :list
   has_many :favorites
+  has_many :feeds
 
   def add_favorite(list)
     favorite_lists.push(list)

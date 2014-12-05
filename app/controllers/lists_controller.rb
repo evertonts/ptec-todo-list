@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!
   before_action :permit_see, only: :show
   before_action :find_list, only: [:show, :add_favorite, :remove_favorite]
+  after_action :create_feed, only: [:add_favorite, :remove_favorite]
 
   def new
     @list = List.new
@@ -51,5 +52,11 @@ class ListsController < ApplicationController
     if @list.particular && @list.user != current_user
       redirect_to authenticated_root_path, alert: 'You cannot see this list'
     end
+  end
+
+  def create_feed
+    action = params[:action]
+    message = t("feed.#{action}", list_name: @list.name)
+    current_user.feeds.create(message: message)
   end
 end
